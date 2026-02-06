@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Tes IQ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+  }
+  .box {
+    padding-top: 100px;
+  }
+  button {
+    padding: 12px 25px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  img {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+
+<div class="box" id="quiz">
+  <h1 id="soal">Soal 1</h1>
+  <p id="pertanyaan">Kamu sering main HP atau nggak?</p>
+  <button onclick="next()">A. Iya</button>
+  <button onclick="next()">B. Nggak</button>
+</div>
+
+<img id="jumpscare" src="jumpscare.jpg">
+<audio id="sound" src="suara.mp3"></audio>
+
+<script>
+let step = 1;
+
+function next() {
+  if (step === 1) {
+    soal.innerText = "Soal 2";
+    pertanyaan.innerText = "Apakah kamu sering belajar?";
+    step++;
+  } 
+  else if (step === 2) {
+    soal.innerText = "Soal 3";
+    pertanyaan.innerText = "Apakah kamu banyak teman?";
+    step++;
+  } 
+  else {
+    quiz.style.display = "none";
+
+    let img = document.getElementById("jumpscare");
+    let audio = document.getElementById("sound");
+
+    img.style.display = "block";
+    audio.play();
+
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    }
+  }
+}
+</script>
+
+</body>
+</html>
